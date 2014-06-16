@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <script src="jquery.js"></script>
+  	<script src="underscore.js"></script>
+  	<script src="backbone.js"></script>
+  </head>
+  <body>
+  	<script>
+      //We are going to create a blog in backbone!  This is your chance to practice using backbone models and backbone views together.  Also you will need to create an .edit function in your post model and add a listener that will update the view when someone calls the edit function on a blog post.
+
+      //put your Post model class here
+
+
+      //put your postView class here
+
+
+      var firstPost = new Post("This is a blog post.  This message should be displayed on my blog.");
+      var secondPost = new Post("Hi!  I'm back, this should be below the first one.  Did both posts render correctly?");
+      var firstPostView = new PostView({model: firstPost});
+      var secondPostView = new PostView({model: secondPost});
+
+      $('body').append([
+        firstPostView.render(),
+        secondPostView.render()
+      ]);
+
+
+  	</script>
+  </body>
+</html>
