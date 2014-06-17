@@ -9,10 +9,27 @@
       //We are going to create a blog in backbone!  This is your chance to practice using backbone models and backbone views together.  Also you will need to create an .edit function in your post model and add a listener that will update the view when someone calls the edit function on a blog post.
 
       //put your Post model class here
-
+      var Post = Backbone.Model.extend({
+        initialize: function(message){
+          this.set('message', message);
+        },
+        edit: function(newmessage){
+          this.set('message',newmessage);
+        }
+      });
 
       //put your postView class here
+      var PostView = Backbone.View.extend({
+        initialize: function(){
+          this.model.on("change", function(){
+            this.render();
+          }, this);
+        },
 
+        render: function(){
+          return this.$el.html(this.model.get('message'));
+        }
+      });
 
       var firstPost = new Post("This is a blog post.  This message should be displayed on my blog.");
       var secondPost = new Post("Hi!  I'm back, this should be below the first one.  Did both posts render correctly?");
